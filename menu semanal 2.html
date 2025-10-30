@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Planificador de Menú Semanal — 1 adulto + 1 niño</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Pequeñas mejoras visuales */
+    textarea { resize: vertical; min-height: 44px; }
+    .cell-area { min-height: 64px; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-white min-h-screen p-6">
+  <div class="max-w-6xl mx-auto">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold text-green-800 flex items-center gap-3">
+        🍽️ Planificador de Menú Semanal — 1 Adulto 👩‍🦰 + 1 Niño 🧒
+      </h1>
+      <p class="text-gray-600 mt-2">Rellena o genera sugerencias saludables. Obtén al final la lista de la compra basada en los platos elegidos.</p>
+    </header>
+
+    <section class="mb-4 p-4 bg-white rounded-2xl shadow-sm">
+      <div class="flex flex-wrap gap-2">
+        <button id="suggestBtn" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg">✨ Sugerir platos</button>
+        <button id="shoppingBtn" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg">🛒 Generar lista de la compra</button>
+        <button id="clearBtn" class="px-4 py-2 bg-red-400 hover:bg-red-500 text-white rounded-lg">♻️ Limpiar tabla</button>
+        <button id="exportCSVBtn" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg">📥 Exportar lista (CSV)</button>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">Las sugerencias están pensadas para ofrecer combinaciones equilibradas (proteína + carbohidrato + verduras/fruta) adaptadas a adulto y niño.</p>
+    </section>
+
+    <main class="overflow-x-auto bg-white rounded-2xl p-4 shadow-sm">
+      <!-- Tabla -->
+      <table class="w-full table-auto border-collapse">
+        <thead>
+          <tr>
+            <th class="p-2 sticky top-0 bg-white text-left">Comida / Día</th>
+            <!-- Días -->
+            <th class="p-2 text-center bg-green-50">Lun<br/><span class="text-xs text-gray-500">L</span></th>
+            <th class="p-2 text-center bg-green-50">Mar</th>
+            <th class="p-2 text-center bg-green-50">Mié</th>
+            <th class="p-2 text-center bg-green-50">Jue</th>
+            <th class="p-2 text-center bg-green-50">Vie</th>
+            <th class="p-2 text-center bg-green-50">Sáb</th>
+            <th class="p-2 text-center bg-green-50">Dom</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas: Desayuno, Almuerzo, Cena -->
+          <tr class="align-top">
+            <td class="p-2 font-medium">Desayuno 🥣</td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Lun" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Mar" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Mié" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Jue" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Vie" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Sáb" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Dom" data-meal="desayuno" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+          </tr>
+
+          <tr class="align-top">
+            <td class="p-2 font-medium">Almuerzo 🍲</td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Lun" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Mar" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Mié" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Jue" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Vie" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Sáb" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Dom" data-meal="almuerzo" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+          </tr>
+
+          <tr class="align-top">
+            <td class="p-2 font-medium">Cena 🌮</td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Lun" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Mar" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Mié" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Jue" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Vie" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Sáb" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+            <td class="p-2"><textarea class="w-full border rounded-md p-2 cell-area" data-day="Dom" data-meal="cena" placeholder="Adulto: ... \nNiño: ..."></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <!-- Lista de compra -->
+    <aside id="shoppingListArea" class="mt-6 bg-white rounded-2xl p-4 shadow-sm hidden">
+      <h2 class="text-xl font-semibold mb-2">🛒 Lista de la compra generada</h2>
+      <p class="text-sm text-gray-600 mb-2">Basada en los platos seleccionados o sugeridos. (Se agrupan ingredientes repetidos.)</p>
+      <ul id="shoppingList" class="list-disc pl-6 text-gray-800"></ul>
+    </aside>
+
+    <footer class="mt-6 text-sm text-gray-500">
+      <p>Instrucciones: usa <strong>"Sugerir platos"</strong> para auto-completar un menú equilibrado; edita las celdas si lo deseas; luego pulsa <strong>"Generar lista de la compra"</strong> para obtener los ingredientes.</p>
+    </footer>
+  </div>
+
+  <script>
+    // --- Datos: platos balanceados para adulto y niño con sus ingredientes ---
+    const balancedMeals = {
+      desayuno: [
+        {
+          adult: "Avena con frutas y nueces",
+          child: "Avena con plátano y miel",
+          ingredients: ["Avena", "Leche o bebida vegetal", "Plátano", "Frutas rojas", "Nueces", "Miel"]
+        },
+        {
+          adult: "Tostada integral con aguacate y huevo",
+          child: "Tostada integral con huevo revuelto",
+          ingredients: ["Pan integral", "Aguacate", "Huevos", "Tomate"]
+        },
+        {
+          adult: "Yogur natural con granola y frutos",
+          child: "Yogur natural con manzana rallada",
+          ingredients: ["Yogur natural", "Granola", "Manzana", "Miel"]
+        }
+      ],
+      almuerzo: [
+        {
+          adult: "Pechuga de pollo a la plancha + quinoa + ensalada",
+          child: "Tiritas de pollo + arroz + zanahoria al vapor",
+          ingredients: ["Pechuga de pollo", "Quinoa", "Lechuga", "Tomate", "Arroz", "Zanahoria"]
+        },
+        {
+          adult: "Filete de pescado + puré de papa + brócoli",
+          child: "Pescado empanado al horno + puré de papa",
+          ingredients: ["Filete de pescado", "Papas", "Brócoli", "Limón"]
+        },
+        {
+          adult: "Lentejas estofadas con verduras",
+          child: "Lentejas suaves con zanahoria",
+          ingredients: ["Lentejas", "Cebolla", "Zanahoria", "Pimiento", "Caldo"]
+        }
+      ],
+      cena: [
+        {
+          adult: "Ensalada templada con salmón",
+          child: "Wrap de pollo y vegetales (sin salsa picante)",
+          ingredients: ["Salmón", "Mezcla de hojas", "Tortilla integral", "Pollo", "Pepino"]
+        },
+        {
+          adult: "Tortilla de verduras + pan integral",
+          child: "Tortilla suave de queso y verduras",
+          ingredients: ["Huevos", "Calabacín", "Pimiento", "Pan integral", "Queso rallado"]
+        },
+        {
+          adult: "Sopa de verduras y filete pequeño",
+          child: "Sopa de fideos con pollo desmenuzado",
+          ingredients: ["Caldo de verduras", "Fideos", "Pollo", "Zanahoria", "Apio"]
+        }
+      ]
+    };
+
+    // Referencias DOM
+    const suggestBtn = document.getElementById('suggestBtn');
+    const shoppingBtn = document.getElementById('shoppingBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const exportCSVBtn = document.getElementById('exportCSVBtn');
+    const textareas = Array.from(document.querySelectorAll('textarea'));
+    const shoppingListArea = document.getElementById('shoppingListArea');
+    const shoppingListEl = document.getElementById('shoppingList');
+
+    // Rellenar sugerencias aleatorias equilibradas
+    suggestBtn.addEventListener('click', () => {
+      // Para cada meal/day textarea
+      textareas.forEach(txt => {
+        const meal = txt.dataset.meal; // desayuno/almuerzo/cena
+        const pool = balancedMeals[meal];
+        const choice = pool[Math.floor(Math.random() * pool.length)];
+        // Formato: Adulto: ... \n Niños: ...
+        txt.value = `Adulto: ${choice.adult}\nNiño: ${choice.child}`;
+        // Guardar ingredientes en data attr (JSON)
+        txt.dataset.ingredients = JSON.stringify(choice.ingredients);
+      });
+      alert('Se han generado sugerencias saludables para cada comida. Puedes editarlas si quieres.');
+    });
+
+    // Limpiar tabla
+    clearBtn.addEventListener('click', () => {
+      if (!confirm('¿Seguro que quieres limpiar toda la tabla y empezar de nuevo?')) return;
+      textareas.forEach(t => {
+        t.value = '';
+        delete t.dataset.ingredients;
+      });
+      shoppingListArea.classList.add('hidden');
+    });
+
+    // Generar lista de la compra
+    shoppingBtn.addEventListener('click', () => {
+      const ingredientsSet = new Set();
+
+      textareas.forEach(t => {
+        // Si hay data-ingredients (sugerido), usarlos
+        if (t.dataset.ingredients) {
+          try {
+            const arr = JSON.parse(t.dataset.ingredients);
+            arr.forEach(i => ingredientsSet.add(normalize(i)));
+            return;
+          } catch (e) {
+            // ignore and try to parse value
+          }
+        }
+        // Si no hay data-ingredients, intentar inferir por texto
+        const raw = t.value.trim();
+        if (!raw) return;
+        // Buscamos por líneas "Adulto: X" y "Niño: Y", y tratamos de buscar match exacto en balancedMeals
+        const lines = raw.split('\n').map(s => s.trim()).filter(Boolean);
+        lines.forEach(l => {
+          // quitar prefijos
+          const after = l.replace(/^Adulto:\s*/i, '').replace(/^Niñ[oa]:\s*/i, '').trim();
+          // intentar buscar en mapping por igualdad de texto
+          const found = findIngredientsByDishName(after);
+          if (found) {
+            found.forEach(i => ingredientsSet.add(normalize(i)));
+          } else {
+            // fallback: tomar palabras separadas por coma
+            after.split(',').map(x => x.trim()).filter(Boolean).forEach(x => ingredientsSet.add(normalize(x)));
+          }
+        });
+      });
+
+      // Mostrar lista
+      const list = Array.from(ingredientsSet).sort();
+      shoppingListEl.innerHTML = '';
+      if (list.length === 0) {
+        shoppingListEl.innerHTML = '<li class="text-gray-600">No se encontraron ingredientes (fila vacía o texto no reconocido).</li>';
+      } else {
+        list.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          shoppingListEl.appendChild(li);
+        });
+      }
+      shoppingListArea.classList.remove('hidden');
+    });
+
+    // Export CSV simple para la lista de la compra
+    exportCSVBtn.addEventListener('click', () => {
+      const items = Array.from(shoppingListEl.querySelectorAll('li')).map(li => li.textContent).filter(Boolean);
+      if (items.length === 0) { alert('Primero genera la lista de la compra.'); return; }
+      const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(items.join('\n'));
+      const link = document.createElement('a');
+      link.setAttribute('href', csvContent);
+      link.setAttribute('download', 'lista_compra.csv');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+    // Helpers
+    function normalize(s) {
+      return s.trim().replace(/\s+/g, ' ');
+    }
+
+    function findIngredientsByDishName(dishName) {
+      if (!dishName) return null;
+      const name = dishName.toLowerCase();
+      for (const mealType of Object.keys(balancedMeals)) {
+        for (const obj of balancedMeals[mealType]) {
+          if (obj.adult.toLowerCase() === name || obj.child.toLowerCase() === name) return obj.ingredients;
+        }
+      }
+      // Intentar búsqueda parcial (si el usuario escribió "avena" por ejemplo)
+      for (const mealType of Object.keys(balancedMeals)) {
+        for (const obj of balancedMeals[mealType]) {
+          if (obj.adult.toLowerCase().includes(name) || obj.child.toLowerCase().includes(name)) return obj.ingredients;
+        }
+      }
+      return null;
+    }
+  </script>
+</body>
+</html>
